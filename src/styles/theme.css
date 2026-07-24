@@ -1,0 +1,26 @@
+/* Design tokens + global base. Import once (in App). */
+:root {
+  --ink: #eef4ff;
+  --muted: #91a4ca;
+  --accent: #2f6bff;
+  --cyan: #5ceaff;
+  --navy: #0a1230;
+  --panel: rgba(12, 20, 44, 0.74);
+  --panel-solid: #0d1630;
+  --line: rgba(92, 234, 255, 0.16);
+  --line-strong: rgba(92, 234, 255, 0.4);
+  /* Latin uses Barlow; Thai glyphs fall through to Noto Sans Thai */
+  --body: 'Barlow Condensed', 'Noto Sans Thai', sans-serif;
+  --thai: 'Noto Sans Thai', 'Barlow Condensed', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #060912;
+  overflow: hidden;
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">SQL database</title>
+  <defs>
+    <linearGradient id="db" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#53edff"/>
+      <stop offset="1" stop-color="#3977ff"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="13" rx="23" ry="9" fill="url(#db)"/>
+  <path d="M9 13v13c0 5 10 9 23 9s23-4 23-9V13c0 5-10 9-23 9S9 18 9 13Zm0 20v13c0 5 10 9 23 9s23-4 23-9V33c0 5-10 9-23 9S9 38 9 33Z" fill="url(#db)" opacity=".92"/>
+  <text x="32" y="49" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#06112d">SQL</text>
+</svg>
