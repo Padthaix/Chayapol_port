@@ -6,6 +6,7 @@ import "./Projects.css";
 
 export default function Projects() {
   const [active, setActive] = useState(0);
+  const [detailOpen, setDetailOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const lastWheelAt = useRef(0);
   const touchStart = useRef(null);
@@ -17,6 +18,11 @@ export default function Projects() {
 
   useEffect(() => {
     const onKey = (e) => {
+      if (e.key === "Escape" && detailOpen) {
+        setDetailOpen(false);
+        return;
+      }
+      if (detailOpen) return;
       if (e.key === "ArrowUp" && active > 0) {
         sfx.move();
         setActive(active - 1);
@@ -25,11 +31,16 @@ export default function Projects() {
         sfx.move();
         setActive(active + 1);
       }
-      if (e.key === "Enter" && PROJECTS[active].link) window.open(PROJECTS[active].link, "_blank");
+      if (e.key === "Enter") setDetailOpen(true);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
+  }, [active, detailOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = detailOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [detailOpen]);
 
   const p = PROJECTS[active];
   const progress = PROJECTS.length > 1 ? active / (PROJECTS.length - 1) : 0;
@@ -154,6 +165,9 @@ export default function Projects() {
                   อ่านรายละเอียดเพิ่มเติม ↗
                 </a>
               )}
+              <button className="pj-detail-trigger" type="button" onClick={() => { sfx.select(); setDetailOpen(true); }}>
+                ดูรายละเอียดผลงาน
+              </button>
             </figcaption>
             <div className="pj-dots" aria-hidden="true">
               {PROJECTS.map((item, i) => (
@@ -163,6 +177,40 @@ export default function Projects() {
           </figure>
         </div>
       </div>
+      {detailOpen && (
+        <div className="pj-modal" role="dialog" aria-modal="true" aria-labelledby="pj-detail-title" onMouseDown={(e) => {
+          if (e.target === e.currentTarget) setDetailOpen(false);
+        }}>
+          <article className="pj-modal-card">
+            <button className="pj-modal-close" type="button" aria-label="ปิดรายละเอียด" onClick={() => setDetailOpen(false)}>×</button>
+            <header className="pj-detail-head">
+              <span className="pj-detail-index">{String(active + 1).padStart(2, "0")}</span>
+              <div>
+                <div className="pj-modal-kicker"><span>{p.type}</span>{p.duration || p.year}</div>
+                <h2 id="pj-detail-title">{p.title}</h2>
+              </div>
+            </header>
+            <p className="pj-modal-lead">{p.overview || p.desc}</p>
+            <div className="pj-detail-content">
+              <aside className="pj-detail-meta">
+                {p.role && <section><h3>บทบาท</h3><p>{p.role}</p></section>}
+                {p.team && <section><h3>ทีม</h3><p>{p.team}</p></section>}
+                {p.detailTags?.length > 0 && <section><h3>แท็ก</h3><div className="pj-tool-list">{p.detailTags.map((tag) => <span key={tag}>{tag}</span>)}</div></section>}
+              </aside>
+              {p.highlights?.length > 0 && (
+                <section className="pj-detail-work">
+                  <h3>สิ่งที่พัฒนาและรับผิดชอบ</h3>
+                  <ol>{p.highlights.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>
+                </section>
+              )}
+            </div>
+            <div className="pj-modal-actions">
+              {p.link && <a href={p.link} target="_blank" rel="noreferrer">เปิดเอกสาร / เว็บไซต์ ↗</a>}
+              {p.secondaryLink && <a href={p.secondaryLink} target="_blank" rel="noreferrer">ดูแหล่งอ้างอิง ↗</a>}
+            </div>
+          </article>
+        </div>
+      )}
     </PageShell>
   );
 }

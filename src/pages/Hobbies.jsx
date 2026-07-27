@@ -59,6 +59,7 @@ export default function Skills() {
               <span className="hb-key">{c.key}</span>
               <span className="hb-th">{c.th}</span>
             </div>
+            <span className="hb-unread-dot" aria-hidden="true" />
             <div className="hb-items">
               <span className="hb-glass-effect" aria-hidden="true" />
               <span className="hb-glass-tint" aria-hidden="true" />
