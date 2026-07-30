@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PageShell from "../components/PageShell";
 import { useSway } from "../lib/useSway";
 import { PROFILE, ABOUT_FACTS } from "../data/content";
@@ -6,7 +5,7 @@ import "./About.css";
 
 export default function About() {
   const portraitRef = useSway();
-  const [showCvNotice, setShowCvNotice] = useState(false);
+  const cvFile = `${import.meta.env.BASE_URL}Chayapol-Chuaibamrung-CV-v3.pdf`;
 
   return (
     <PageShell index="01" title="About ME" eyebrow="แนะนำตัว">
@@ -39,30 +38,20 @@ export default function About() {
             </div>
           </div>
 
-          <button
-            type="button"
+          <a
             className="pf-next ab-cv-button"
-            onClick={() => setShowCvNotice(true)}
-            aria-label="View CV"
+            href={cvFile}
+            download="Chayapol-Chuaibamrung-CV.pdf"
+            aria-label="Download CV as PDF"
           >
             <span className="pf-next-glow" />
             <span className="pf-next-shadow" />
             <span className="pf-next-highlight" />
-            <span className="pf-next-label">VIEW CV</span>
-          </button>
+            <span className="pf-next-label">DOWNLOAD CV</span>
+          </a>
         </div>
       </div>
 
-      {showCvNotice && (
-        <div className="ab-game-alert" role="presentation" onClick={() => setShowCvNotice(false)}>
-          <div className="ab-game-alert-box" role="alertdialog" aria-modal="true" aria-labelledby="cv-alert-title" onClick={(e) => e.stopPropagation()}>
-            <div className="ab-game-alert-stripe" />
-            <div className="ab-game-alert-code">SYSTEM ERROR</div>
-            <h2 id="cv-alert-title">ยังไม่อัพโหลดนะจ้ะ</h2>
-            <button type="button" autoFocus onClick={() => setShowCvNotice(false)}>ตกลง</button>
-          </div>
-        </div>
-      )}
     </PageShell>
   );
 }
