@@ -25,7 +25,7 @@ export const PROFILE = {
   nameTh: "ชยพล",
   nameThRest: "ช่วยบำรุง",
   nameEn: "Chayapol Chuaibamrung — Computer Science",
-  intro: "นักศึกษาวิทยาการคอมพิวเตอร์ที่สนใจ Frontend Development และ AI ชอบเปลี่ยนไอเดียให้เป็นผลงานที่ใช้งานได้จริง พร้อมเรียนรู้จากประสบการณ์ใหม่ในสภาพแวดล้อมนานาชาติ",
+  intro: "นักศึกษาวิทยาการคอมพิวเตอร์ที่สนใจ Full-stack, PM และ AI และอยากพัฒนาทักษะเพื่อนำไปใช้ต่อในอนาคต",
   photo: profileImg,
 };
 
