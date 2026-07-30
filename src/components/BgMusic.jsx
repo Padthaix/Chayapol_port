@@ -99,8 +99,9 @@ export default function BgMusic() {
         className={`bgm-btn${muted ? " is-muted" : ""}`}
         onClick={toggleMute}
         disabled={!ready}
+        aria-pressed={!muted}
         aria-label={muted ? "Unmute background music" : "Mute background music"}
-        title={MUSIC.title}
+        title={muted ? "Click to play background music" : "Click to mute background music"}
       >
         <span className="bgm-bend" />
         <span className="bgm-face" />
@@ -109,9 +110,10 @@ export default function BgMusic() {
           <span className="bgm-eq">
             <span /><span /><span /><span />
           </span>
-          <span className="bgm-label">{muted ? "MUTED" : "PLAYING"}</span>
-          <span className="bgm-sep" />
-          <span className="bgm-track">{MUSIC.title}</span>
+          <span className="bgm-copy">
+            <span className="bgm-label">{muted ? "MUSIC OFF" : "MUSIC ON"}</span>
+            <span className="bgm-action">{muted ? "CLICK TO PLAY" : "CLICK TO MUTE"}</span>
+          </span>
         </span>
       </button>
     </>
