@@ -159,6 +159,38 @@
 .pf-next:hover .pf-next-highlight { transform: translateY(-50%) scaleX(1); }
 .pf-next:hover .pf-next-label { color: #0d1a3a; transform: translateX(4px); }
 
+/* Subtle idle glow makes every onward action discoverable. */
+.pf-next .pf-next-glow {
+  opacity: 0.22;
+  animation: pf-next-idle-glow 2.4s ease-in-out infinite;
+}
+.pf-next .pf-next-label {
+  animation: pf-next-idle-label-glow 2.4s ease-in-out infinite;
+}
+.pf-next:hover .pf-next-glow,
+.pf-next:hover .pf-next-label,
+.pf-next:focus-visible .pf-next-glow,
+.pf-next:focus-visible .pf-next-label {
+  animation: none;
+}
+.pf-next:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.92);
+  outline-offset: 7px;
+}
+@keyframes pf-next-idle-glow {
+  0%, 100% { opacity: 0.16; transform: scale(0.98); }
+  50% { opacity: 0.38; transform: scale(1.04); }
+}
+@keyframes pf-next-idle-label-glow {
+  0%, 100% { text-shadow: 0 0 4px rgba(83,237,255,0.3); }
+  50% { text-shadow: 0 0 8px rgba(83,237,255,0.62), 0 0 18px rgba(26,106,255,0.38); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-next .pf-next-glow,
+  .pf-next .pf-next-label { animation: none; }
+  .pf-next .pf-next-label { text-shadow: 0 0 7px rgba(83,237,255,0.5); }
+}
+
 /* Persona-style back arrow: mirrors the forward page arrow. */
 .pf-back {
   position: absolute;

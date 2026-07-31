@@ -257,8 +257,6 @@ export const SKILL_GROUPS = [
 
 // ── Contact ──────────────────────────────────────────────
 export const CONTACTS = [
-  { key: "INSTAGRAM", handle: "@chuaibmr", href: "https://www.instagram.com/chuaibmr/", color: "#e1306c", preview: contactIcon("instagram.svg") },
-  { key: "TIKTOK", handle: "@Padthaix", href: "https://www.tiktok.com/@padthaix", color: "#ff3b6b", preview: contactIcon("tiktok.svg") },
   { key: "GITHUB", handle: "github.com/Padthaix", href: "https://github.com/Padthaix", color: "#181717", preview: contactIcon("github.svg") },
   { key: "LINKEDIN", handle: "in/chayapol-chuybamrung", href: "https://www.linkedin.com/in/chayapol-chuybamrung-1ba748356/", color: "#4a8fff", preview: contactIcon("linkedin.svg") },
   { key: "EMAIL", handle: "Padthaix@gmail.com", href: "mailto:Padthaix@gmail.com", color: "#5ceaff", preview: contactIcon("gmail.svg") },
